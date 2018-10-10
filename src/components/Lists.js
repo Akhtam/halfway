@@ -13,8 +13,6 @@ class Lists extends Component {
 
   }
 
-
-  
   render() {
     const ren = this.props.result.map(el => (
       <Results
