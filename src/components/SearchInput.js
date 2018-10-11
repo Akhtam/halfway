@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'semantic-ui-react';
+
 import keys from '../config/keys';
 
 const btnStyle = {
@@ -11,15 +12,27 @@ class SearchInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      inoputA: '',
+      inputA: '',
       inputB: ''
     }
   }
-  handleChane = (e) => {
-    const a = `https://maps.googleapis.com/maps/api/place/queryautocomplete/json?key=${keys.API_KEY}&input=${e.target.value}`;
-    fetch(a)
-      .then(data => data.json())
-      .then(el => console.log(el));
+  handleChangeA = (e) => {
+    this.setState({
+      inputA: e.target.value
+    }, () => console.log(this.state.inputA));
+  }
+  handleChangeB = (e) => {
+    this.setState({
+      inputB: e.target.value
+    }, () => console.log(this.state.inputB));
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const locA = this.state.inputA;
+    const locB = this.state.inputB;
+    const key = keys.API_KEY;
+
   }
 
   render() {
@@ -27,11 +40,10 @@ class SearchInput extends Component {
       <div>
         <Form unstackable>
           <Form.Group widths={2}>
-            <Form.Input placeholder='Location A' />
-            <Form.Input placeholder='Location B' onChange={this.handleChane}/>
+            <Form.Input placeholder='Location A' onChange={this.handleChangeA}/>
+            <Form.Input placeholder='Location B' onChange={this.handleChangeB}/>
           </Form.Group>
-          <Button type='submit' style={btnStyle}>Submit</Button>
-          
+          <Button type='submit' style={btnStyle} onClick={this.handleSubmit}>Submit</Button> 
         </Form>
       </div>
     )
