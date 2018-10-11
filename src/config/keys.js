@@ -1,4 +1,3 @@
 module.exports = {
-  API_KEY: 'AIzaSyADSkbJEgjWXvOmOKNzz4kQsGwI-MAqMjo',
-  YELP_KEY: 'lbB1ejiqGjJZsh8FhIsJ9A-XSVcIv40d0FFgRbq2dVNfv5ucpmH4tmBeHYJTW66KWfnQ4wDQ9Ri-KF0ZVOqJaPN0fxlzJEmEKSe3H5ZyAv9JDZe-GlpHwvsF_Mu9W3Yx'
+ 
 }
