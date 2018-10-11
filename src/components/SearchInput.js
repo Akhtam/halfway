@@ -32,7 +32,7 @@ class SearchInput extends Component {
     const locA = this.state.inputA;
     const locB = this.state.inputB;
     const key = keys.API_KEY;
-
+    
   }
 
   render() {
