@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import keys from './config/keys';
 
 const calculateMid = (data) => {
     let num_coords = data.length;
@@ -37,6 +37,7 @@ const calculateMid = (data) => {
 
 
 const getMiddlePoint = async ( url, key, locationA, locationB ) => {
+
   try {
     const locA = await axios.get(url, {
       params: {
@@ -45,7 +46,7 @@ const getMiddlePoint = async ( url, key, locationA, locationB ) => {
       }
     })
     .then(res => [res.data.results[0].geometry.location.lat,res.data.results[0].geometry.location.lng])
-    console.log(locA)
+
     const locB = await axios.get(url, {
       params: {
         address: locationB,
@@ -53,7 +54,7 @@ const getMiddlePoint = async ( url, key, locationA, locationB ) => {
       }
     })
     .then(res => [res.data.results[0].geometry.location.lat,res.data.results[0].geometry.location.lng])
-    console.log(locB)
+
 
     const mid = await Promise.all([locA, locB])
     return calculateMid(mid);
@@ -62,6 +63,8 @@ const getMiddlePoint = async ( url, key, locationA, locationB ) => {
     console.log(e);
   }
 }
+
+
 
 
 
