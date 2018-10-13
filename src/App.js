@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import './App.css';
 import { Header, Segment } from 'semantic-ui-react';
 import SearchInput from './components/SearchInput';
+import axios from 'axios';
 
 import Lists from './components/Lists';
 
 class App extends Component {
+
+
   render() {
     return (
       <div className="App">

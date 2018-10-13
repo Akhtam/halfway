@@ -45,7 +45,7 @@ const getMiddlePoint = async ( url, key, locationA, locationB ) => {
         key,
       }
     })
-    .then(res => [res.data.results[0].geometry.location.lat,res.data.results[0].geometry.location.lng])
+    .then(res => [res.data.results[0].geometry.location.lat, res.data.results[0].geometry.location.lng])
 
     const locB = await axios.get(url, {
       params: {
@@ -53,7 +53,7 @@ const getMiddlePoint = async ( url, key, locationA, locationB ) => {
         key,
       }
     })
-    .then(res => [res.data.results[0].geometry.location.lat,res.data.results[0].geometry.location.lng])
+    .then(res => [res.data.results[0].geometry.location.lat, res.data.results[0].geometry.location.lng])
 
 
     const mid = await Promise.all([locA, locB])

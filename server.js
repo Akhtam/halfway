@@ -1,7 +1,6 @@
 
 const bodyParser = require('body-parser');
 const express = require('express');
-const apiKey = 'lbB1ejiqGjJZsh8FhIsJ9A-XSVcIv40d0FFgRbq2dVNfv5ucpmH4tmBeHYJTW66KWfnQ4wDQ9Ri-KF0ZVOqJaPN0fxlzJEmEKSe3H5ZyAv9JDZe-GlpHwvsF_Mu9W3Yx';
 const yelp = require('yelp-fusion');
 const axios = require('axios');
 
@@ -31,7 +30,7 @@ app.get('/', (req, res) => {
       Authorization: `Bearer ${apiKey}`
     }
   })
-  .then(({data}) => res.json(data.businesses))
+  .then(({data}) => res.json(data.))
   .catch(er => console.log(er))
 });
 
