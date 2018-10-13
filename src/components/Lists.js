@@ -14,24 +14,22 @@ class Lists extends Component {
     super(props);
     this.state = {
       results: ''
-		};
-	}
-componentDidMount() {
-	this.onLoad()
-}
+    };
+  }
+  // componentDidMount() {
+  // 	this.onLoad()
+  // }
 
-onLoad = () => {
-
-	axios.get('/')
-	.then(res => console.log(res))
-	.catch(err => console.log(err))
-}  
+  onLoad = () => {
+    axios
+      .get('/')
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+  };
 
   render() {
-    const ren = unsplashPhotos.map((el, i) => <Results key={i} {...el} />);
-    return (
-        <div style={lists}>{ren}</div>
-    );
+    const ren = unsplashPhotos.map((el) => <Results key={el.id} {...el} />);
+    return <div style={lists}>{ren}</div>;
   }
 }
 
