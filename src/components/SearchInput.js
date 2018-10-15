@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'semantic-ui-react';
 import keys from '../config/keys';
-import getMiddlePoint from '../helpers'
+import getMiddlePoint from '../helpers';
 
 const btnStyle = {
-  backgroundColor: '#9400D3',
+  backgroundColor: '#57a8a6',
   color: 'white'
 };
-const url = 'https://maps.googleapis.com/maps/api/geocode/json'
+const url = 'https://maps.googleapis.com/maps/api/geocode/json';
 
 class SearchInput extends Component {
   constructor(props) {
@@ -19,30 +19,33 @@ class SearchInput extends Component {
   }
 
   handleChangeA = e => {
-    this.setState(
-      {
-        inputA: e.target.value
-      },
-      () => console.log(this.state.inputA)
-    );
+    this.setState({
+      inputA: e.target.value
+    });
   };
 
   handleChangeB = e => {
-    this.setState(
-      {
-        inputB: e.target.value
-      },
-      () => console.log(this.state.inputB)
-    );
+    this.setState({
+      inputB: e.target.value
+    });
   };
 
-   handleSubmit = async(e) => {
-    e.preventDefault();
-    const locA = this.state.inputA;
-    const locB = this.state.inputB;
-    const key = keys.API_KEY;
-    let m  = await getMiddlePoint(url, key, locA, locB);
-    console.log(m)
+  handleSubmit = async e => {
+    if(this.state.inputA.length > 5 && this.state.inputB.length > 5) {
+      e.preventDefault();
+      const locA = this.state.inputA;
+      const locB = this.state.inputB;
+      const key = keys.API_KEY;
+      let m = await getMiddlePoint(url, key, locA, locB);
+      console.log(m)
+      alert(`results for ${this.state.inputA} and ${this.state.inputB}`)
+      this.props.getResults(m[0], m[1]);
+      this.props.getLocations(this.state.inputA, this.state.inputB);
+      this.setState({inputA: '', inputB: ''});
+    } else {
+      alert('please')
+    }
+    
   };
 
   render() {
@@ -51,10 +54,12 @@ class SearchInput extends Component {
         <Form unstackable>
           <Form.Group widths={2}>
             <Form.Input
+              value={this.state.inputA}
               placeholder="Location A"
               onChange={this.handleChangeA}
             />
             <Form.Input
+              value={this.state.inputB}
               placeholder="Location B"
               onChange={this.handleChangeB}
             />

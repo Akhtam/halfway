@@ -1,36 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Results from './Results';
-import unsplashPhotos from '../dbmock/dumm';
-import axios from 'axios';
+import { Header } from 'semantic-ui-react'
 
 const lists = {
   margin: '20px 20px',
-  width: '50%',
-  backgroundColor: 'white'
+  width: '40%',
+	backgroundColor: 'white',
 };
 
-class Lists extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      results: ''
-    };
-  }
-  // componentDidMount() {
-  // 	this.onLoad()
-  // }
 
-  onLoad = () => {
-    axios
-      .get('/')
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
-  };
-
-  render() {
-    const ren = unsplashPhotos.map((el) => <Results key={el.id} {...el} />);
-    return <div style={lists}>{ren}</div>;
-  }
-}
+const Lists = props => {
+  const ren = props.result.map(el => <Results key={el.id} {...el}/>);
+  return (
+    <div>
+      <div style={lists}>{ren}</div>;
+    </div>
+  );
+};
 
 export default Lists;

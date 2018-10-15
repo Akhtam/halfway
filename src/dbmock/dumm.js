@@ -1,4 +1,4 @@
-const unsplashPhotos = [
+const dummyData = [
   {
     id: 'f-m7-hyFzkf0HSEeQ2s-9A',
     alias: 'fog-harbor-fish-house-san-francisco-2',
@@ -19,7 +19,7 @@ const unsplashPhotos = [
         title: 'Bars'
       }
     ],
-    rating: 4,
+    rating: 2,
     coordinates: {
       latitude: 37.80885,
       longitude: -122.41023
@@ -157,4 +157,4 @@ const unsplashPhotos = [
     distance: 4911.928931733509
   }
 ];
-export default unsplashPhotos;
+export default dummyData;

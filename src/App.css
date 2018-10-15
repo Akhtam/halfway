@@ -1,17 +1,17 @@
 .search-input {
   width: 50%;
-  margin: 60px auto 10px auto;
+  margin: 10px auto;
 }
 .ui.segment {
-  height: 240px;
-  background-color: #57a8a6;
+  height: 250px;
+  background-color: #899696;
 }
 .logo {
   color: white;
 }
 h1 {
-  color:#9400D3;
+  color: #479da0;
 }
-
-
-
+.location {
+  color: #479da0
+}
