@@ -1,11 +1,13 @@
 import React from 'react';
 import Results from './Results';
-import { Header } from 'semantic-ui-react'
+
 
 const lists = {
-  margin: '20px 20px',
-  width: '40%',
-	backgroundColor: 'white',
+  margin: '30px 20px',
+  width: '50%',
+  backgroundColor: 'white',
+  position: 'absolute',
+  left: '50px'
 };
 
 
@@ -13,7 +15,7 @@ const Lists = props => {
   const ren = props.result.map(el => <Results key={el.id} {...el}/>);
   return (
     <div>
-      <div style={lists}>{ren}</div>;
+      <div style={lists}>{ren}</div>
     </div>
   );
 };
