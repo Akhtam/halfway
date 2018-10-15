@@ -4,7 +4,7 @@ import keys from '../config/keys';
 import getMiddlePoint from '../helpers';
 
 const btnStyle = {
-  backgroundColor: '#57a8a6',
+  backgroundColor: '#479da0',
   color: 'white'
 };
 const url = 'https://maps.googleapis.com/maps/api/geocode/json';
@@ -38,8 +38,7 @@ class SearchInput extends Component {
       const key = keys.API_KEY;
       let m = await getMiddlePoint(url, key, locA, locB);
       console.log(m)
-      alert(`results for ${this.state.inputA} and ${this.state.inputB}`)
-      this.props.getResults(m[0], m[1]);
+      this.props.getResults(m[0], m[1], m);
       this.props.getLocations(this.state.inputA, this.state.inputB);
       this.setState({inputA: '', inputB: ''});
     } else {

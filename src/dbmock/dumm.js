@@ -19,7 +19,7 @@ const dummyData = [
         title: 'Bars'
       }
     ],
-    rating: 2,
+    rating: 4,
     coordinates: {
       latitude: 37.80885,
       longitude: -122.41023
