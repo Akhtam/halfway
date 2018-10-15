@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const apiKey =
-  'lbB1ejiqGjJZsh8FhIsJ9A-XSVcIv40d0FFgRbq2dVNfv5ucpmH4tmBeHYJTW66KWfnQ4wDQ9Ri-KF0ZVOqJaPN0fxlzJEmEKSe3H5ZyAv9JDZe-GlpHwvsF_Mu9W3Yx';
+const apiKey = 'YELP_KEY';
 const yelp = require('yelp-fusion');
 const axios = require('axios');
 
