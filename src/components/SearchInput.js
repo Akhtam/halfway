@@ -3,10 +3,12 @@ import { Form, Button } from 'semantic-ui-react';
 import keys from '../config/keys';
 import getMiddlePoint from '../helpers';
 
+
 const btnStyle = {
   backgroundColor: '#479da0',
   color: 'white'
 };
+
 const url = 'https://maps.googleapis.com/maps/api/geocode/json';
 
 class SearchInput extends Component {
@@ -31,20 +33,17 @@ class SearchInput extends Component {
   };
 
   handleSubmit = async e => {
-    if(this.state.inputA.length > 5 && this.state.inputB.length > 5) {
-      e.preventDefault();
-      const locA = this.state.inputA;
-      const locB = this.state.inputB;
-      const key = keys.API_KEY;
-      let m = await getMiddlePoint(url, key, locA, locB);
-      console.log(m)
-      this.props.getResults(m[0], m[1], m);
-      this.props.getLocations(this.state.inputA, this.state.inputB);
-      this.setState({inputA: '', inputB: ''});
+    e.preventDefault();
+    const { inputA, inputB} = this.state;
+    const key = keys.API_KEY;
+    if (inputA.length > 5 && inputB.length > 5) {
+      let m = await getMiddlePoint(url, key, inputA, inputB);
+      console.log(m);
+      this.props.getResults(m, inputA, inputB)
+      this.setState({ inputA: '', inputB: '' });
     } else {
-      alert('please')
+      alert('please enter Address');
     }
-    
   };
 
   render() {
