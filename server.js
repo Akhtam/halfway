@@ -4,7 +4,6 @@ const apiKey = 'YELP_KEY';
 const yelp = require('yelp-fusion');
 const axios = require('axios');
 
-const client = yelp.client(apiKey);
 
 const app = express();
 const port = process.env.PORT || 5000;
