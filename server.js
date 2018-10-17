@@ -1,10 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const apiKey = 'YELP_KEY';
-const yelp = require('yelp-fusion');
 const axios = require('axios');
-
-
 const app = express();
 const port = process.env.PORT || 5000;
 
