@@ -6,7 +6,7 @@ import axios from 'axios';
 import dummyData from './dbmock/dumm';
 import IMAGE from './paula.jpg';
 import Lists from './components/Lists';
-import ShowMap from './components/ShowMap'
+import ShowMap from './components/ShowMap';
 
 const backImg = {
   backgroundImage: `url(${IMAGE})`,
@@ -19,29 +19,28 @@ class App extends Component {
     super(props);
     this.state = {
       results: dummyData,
-      middle: [37.7759,-122.4245],
+      middle: [],
       locationA: '',
       locationB: '',
       showLocation: false
     };
   }
 
-  getResults = async (lat, lng) => {
+  getResults = async (middle, locationA, locationB) => {
     const response = await axios.get('/ten', {
       params: {
-        lat: lat,
-        lng: lng
+        lat: middle[0],
+        lng: middle[1]
       }
     });
+
     if (response.status !== 200) {
       throw Error(response.message);
     }
     const results = await response.data.businesses;
-    this.setState({ results });
-  };
 
-  getAddress = (locationA, locationB, middle) => {
     this.setState({
+      results,
       middle,
       locationA,
       locationB,
@@ -56,8 +55,8 @@ class App extends Component {
           <Segment textAlign="center" style={backImg}>
             <Header textAlign="center">
               <h1>
-                <span className="logo">co</span>
-                Location
+                Half
+                <span className="logo">way</span>
               </h1>
               <Header.Subheader>
                 <h3 className="subheader logo"> Fair & convinient Location</h3>
@@ -71,19 +70,21 @@ class App extends Component {
             </div>
           </Segment>
         </div>
+
         <div>
-          {
-            this.state.showLocation ?
+          {this.state.showLocation ? (
             <Header as="h4" block color="grey">
-              Results for <span className="location">1 Clay st</span> and{' '}
-              <span className="location">1 Market st</span>
+              Results between{' '}
+              <span className="location">{this.state.locationA}</span> and{' '}
+              <span className="location">{this.state.locationB}</span>
             </Header>
-            : null
-          }
+          ) : null}
         </div>
+
         <div>
-          <ShowMap mid={this.state.middle}/>
+          <ShowMap mid={this.state.middle} />
         </div>
+
         <div>
           <Lists result={this.state.results} />
         </div>
