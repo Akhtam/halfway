@@ -80,11 +80,6 @@ class App extends Component {
             </Header>
           ) : null}
         </div>
-
-        <div>
-          <ShowMap mid={this.state.middle} />
-        </div>
-
         <div>
           <Lists result={this.state.results} />
         </div>
