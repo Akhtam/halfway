@@ -1,21 +1,24 @@
 import React from 'react';
 import Results from './Results';
 
-
 const lists = {
-  margin: '30px 20px',
-  width: '50%',
+  margin: 'auto',
+  marginTop: '30px',
+  width: '41%',
   backgroundColor: 'white',
   position: 'absolute',
-  left: '50px'
+  left: '6%',
+  height: '650px',
+  overflowY: 'scroll',
+  // border: '1px solid #BFBFBF',
+  boxShadow: '5px 5px 10px  #aaaaaa'
 };
 
-
 const Lists = props => {
-  const ren = props.result.map(el => <Results key={el.id} {...el}/>);
+  const ren = props.result.map(el => <Results key={el.id} {...el} />);
   return (
-    <div>
-      <div style={lists}>{ren}</div>
+    <div style={lists}>
+      <div>{ren}</div>
     </div>
   );
 };

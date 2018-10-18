@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const apiKey = 'YELP_API_KEY';
+const apiKey = 'YELP_KEY';
 const axios = require('axios');
 const app = express();
 const port = process.env.PORT || 5000;
@@ -16,7 +16,7 @@ app.get('/ten', (req, res) => {
         latitude: req.query.lat,
         longitude: req.query.lng,
         radius: 800,
-        limit: 10
+        limit: 20
       },
       headers: {
         Authorization: `Bearer ${apiKey}`

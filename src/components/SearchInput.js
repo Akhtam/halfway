@@ -38,8 +38,17 @@ class SearchInput extends Component {
     const key = keys.API_KEY;
     if (inputA.length > 5 && inputB.length > 5) {
       let m = await getMiddlePoint(url, key, inputA, inputB);
-      console.log(m);
-      this.props.getResults(m, inputA, inputB)
+      const mid = m.calcMiddle;
+      const locA = {
+        geoLoc : m.geoLocationA,
+        fizAddress: inputA
+      };
+      const locB = {
+        geoLoc : m.geoLocationB,
+        fizAddress: inputB
+      }
+      console.log(m, locA, locB)
+      this.props.getResults(mid, locA, locB)
       this.setState({ inputA: '', inputB: '' });
     } else {
       alert('please enter Address');

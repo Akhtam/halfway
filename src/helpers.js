@@ -61,7 +61,11 @@ const getMiddlePoint = async (url, key, locationA, locationB) => {
       ]);
 
     const mid = await Promise.all([locA, locB]);
-    return calculateMid(mid);
+    return {
+      calcMiddle: calculateMid(mid),
+      geoLocationA: locA,
+      geoLocationB: locB
+    };
   } catch (e) {
     console.log(e);
   }

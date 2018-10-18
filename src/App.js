@@ -6,7 +6,7 @@ import axios from 'axios';
 import dummyData from './dbmock/dumm';
 import IMAGE from './paula.jpg';
 import Lists from './components/Lists';
-import ShowMap from './components/ShowMap';
+import GoogleApiWrapper from './components/ShowMap';
 
 const backImg = {
   backgroundImage: `url(${IMAGE})`,
@@ -20,8 +20,14 @@ class App extends Component {
     this.state = {
       results: dummyData,
       middle: [],
-      locationA: '',
-      locationB: '',
+      locationA: {
+        geoLoc: [],
+        fizAddress: ''
+      },
+      locationB: {
+        geoLoc: [],
+        fizAddress: ''
+      },
       showLocation: false
     };
   }
@@ -38,7 +44,6 @@ class App extends Component {
       throw Error(response.message);
     }
     const results = await response.data.businesses;
-
     this.setState({
       results,
       middle,
@@ -49,6 +54,7 @@ class App extends Component {
   };
 
   render() {
+    const { results, middle, locationA, locationB, showLocation } = this.state;
     return (
       <div className="App">
         <div className="container">
@@ -63,25 +69,29 @@ class App extends Component {
               </Header.Subheader>
             </Header>
             <div className="search-input">
-              <SearchInput
-                getResults={this.getResults}
-                getLocations={this.getAddress}
-              />
+              <SearchInput getResults={this.getResults} />
             </div>
           </Segment>
         </div>
 
         <div>
-          {this.state.showLocation ? (
+          {showLocation ? (
             <Header as="h4" block color="grey">
               Results between{' '}
-              <span className="location">{this.state.locationA}</span> and{' '}
-              <span className="location">{this.state.locationB}</span>
+              <span className="location">{locationA.fizAddress}</span> and{' '}
+              <span className="location">{locationB.fizAddress}</span>
             </Header>
           ) : null}
         </div>
         <div>
-          <Lists result={this.state.results} />
+          <GoogleApiWrapper
+            midd={middle}
+            firstLoc={locationA.geoLoc}
+            secondLoc={locationB.geoLoc}
+          />
+        </div>
+        <div>
+          <Lists result={results} />
         </div>
       </div>
     );

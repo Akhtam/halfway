@@ -1,8 +1,19 @@
 import React from 'react';
 import { Item, Divider, Rating } from 'semantic-ui-react';
-
-const Results = ({ image_url, name, categories, location, url, rating, display_phone }) => (
-  <Item.Group style={{ margin: 'inherit' }}>
+const list = {
+  margin: 'inherit',
+  padding: '10px'
+};
+const Results = ({
+  image_url,
+  name,
+  categories,
+  location,
+  url,
+  rating,
+  display_phone
+}) => (
+  <Item.Group style={list}>
     <Item>
       <Item.Image size="small" src={image_url} />
       <Item.Content>
@@ -14,11 +25,8 @@ const Results = ({ image_url, name, categories, location, url, rating, display_p
             {`${location.address1} ${location.address2} ${location.city}`}
           </h4>
         </Item.Meta>
+        <Item.Meta>{display_phone}</Item.Meta>
         <Item.Meta>
-          {display_phone}
-        </Item.Meta>
-        <Item.Meta>
-
           <Rating
             icon="star"
             color="red"
@@ -29,7 +37,7 @@ const Results = ({ image_url, name, categories, location, url, rating, display_p
           />
         </Item.Meta>
         <Item.Extra>
-          <span style={{color:'#57a8a6'}}>{categories[0].alias}</span>
+          <span style={{ color: '#57a8a6' }}>{categories[0].alias}</span>
         </Item.Extra>
       </Item.Content>
     </Item>
