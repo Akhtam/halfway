@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const apiKey = 'YELP_KEY';
+const apiKey = '';
 const axios = require('axios');
 const app = express();
 const port = process.env.PORT || 5000;
@@ -8,11 +8,11 @@ const port = process.env.PORT || 5000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get('/ten', (req, res) => {
+app.get('/results', (req, res) => {
   axios
     .get('https://api.yelp.com/v3/businesses/search', {
       params: {
-        term: 'bar',
+        term: 'food',
         latitude: req.query.lat,
         longitude: req.query.lng,
         radius: 800,
