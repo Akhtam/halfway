@@ -22,11 +22,11 @@ class App extends Component {
       middle: [],
       locationA: {
         geoLoc: [],
-        fizAddress: ''
+        fullAddress: ''
       },
       locationB: {
         geoLoc: [],
-        fizAddress: ''
+        fullAddress: ''
       },
       showLocation: false
     };
@@ -43,7 +43,9 @@ class App extends Component {
     if (response.status !== 200) {
       throw Error(response.message);
     }
+
     const results = await response.data.businesses;
+
     this.setState({
       results,
       middle,
@@ -78,8 +80,8 @@ class App extends Component {
           {showLocation ? (
             <Header as="h4" block color="grey">
               Results between{' '}
-              <span className="location">{locationA.fizAddress}</span> and{' '}
-              <span className="location">{locationB.fizAddress}</span>
+              <span className="location">{locationA.fullAddress}</span> and{' '}
+              <span className="location">{locationB.fullAddress}</span>
             </Header>
           ) : null}
         </div>
