@@ -3,7 +3,6 @@ import { Form, Button } from 'semantic-ui-react';
 import keys from '../config/keys';
 import getMiddlePoint from '../helpers';
 
-
 const btnStyle = {
   backgroundColor: '#479da0',
   color: 'white'
@@ -16,7 +15,8 @@ class SearchInput extends Component {
     super(props);
     this.state = {
       inputA: '',
-      inputB: ''
+      inputB: '',
+      category: 'food'
     };
   }
 
@@ -34,21 +34,20 @@ class SearchInput extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-    const { inputA, inputB} = this.state;
+    const { inputA, inputB } = this.state;
     const key = keys.API_KEY;
     if (inputA.length > 5 && inputB.length > 5) {
       let m = await getMiddlePoint(url, key, inputA, inputB);
       const mid = m.calcMiddle;
       const locA = {
-        geoLoc : m.geoLocationA,
-        fizAddress: inputA
+        geoLoc: m.geoLocationA,
+        fullAddress: inputA
       };
       const locB = {
-        geoLoc : m.geoLocationB,
-        fizAddress: inputB
-      }
-      console.log(m, locA, locB)
-      this.props.getResults(mid, locA, locB)
+        geoLoc: m.geoLocationB,
+        fullAddress: inputB
+      };
+      this.props.getResults(mid, locA, locB);
       this.setState({ inputA: '', inputB: '' });
     } else {
       alert('please enter Address');
@@ -58,19 +57,21 @@ class SearchInput extends Component {
   render() {
     return (
       <div>
-        <Form unstackable>
-          <Form.Group widths={2}>
-            <Form.Input
+        <Form>
+          <Form.Field>
+            <input     
               value={this.state.inputA}
               placeholder="Location A"
               onChange={this.handleChangeA}
             />
-            <Form.Input
+          </Form.Field>
+          <Form.Field>
+            <input     
               value={this.state.inputB}
               placeholder="Location B"
               onChange={this.handleChangeB}
             />
-          </Form.Group>
+          </Form.Field>
           <Button type="submit" style={btnStyle} onClick={this.handleSubmit}>
             Submit
           </Button>

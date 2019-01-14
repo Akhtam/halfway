@@ -4,7 +4,7 @@ import { Header, Segment } from 'semantic-ui-react';
 import SearchInput from './components/SearchInput';
 import axios from 'axios';
 import dummyData from './dbmock/dumm';
-import IMAGE from './paula.jpg';
+import IMAGE from './landry.jpg';
 import Lists from './components/Lists';
 import GoogleApiWrapper from './components/ShowMap';
 
@@ -33,7 +33,7 @@ class App extends Component {
   }
 
   getResults = async (middle, locationA, locationB) => {
-    const response = await axios.get('/ten', {
+    const response = await axios.get('/res', {
       params: {
         lat: middle[0],
         lng: middle[1]

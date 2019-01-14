@@ -1,9 +1,6 @@
 import React from 'react';
 import { Item, Divider, Rating } from 'semantic-ui-react';
-const list = {
-  margin: 'inherit',
-  padding: '10px'
-};
+
 const Results = ({
   image_url,
   name,
@@ -13,7 +10,7 @@ const Results = ({
   rating,
   display_phone
 }) => (
-  <Item.Group style={list}>
+  <Item.Group className="list">
     <Item>
       <Item.Image size="small" src={image_url} />
       <Item.Content>
