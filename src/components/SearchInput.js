@@ -15,44 +15,37 @@ class SearchInput extends Component {
     super(props);
     this.state = {
       inputA: '',
-      inputB: '',
-      category: 'food'
+      inputB: ''
     };
   }
 
-  handleChangeA = e => {
+  handleChange = e => {
     this.setState({
-      inputA: e.target.value
+      [e.target.name]: e.target.value
     });
   };
 
-  handleChangeB = e => {
-    this.setState({
-      inputB: e.target.value
-    });
-  };
-
-  handleSubmit = async e => {
-    e.preventDefault();
-    const { inputA, inputB } = this.state;
-    const key = keys.API_KEY;
-    if (inputA.length > 5 && inputB.length > 5) {
-      let m = await getMiddlePoint(url, key, inputA, inputB);
-      const mid = m.calcMiddle;
-      const locA = {
-        geoLoc: m.geoLocationA,
-        fullAddress: inputA
-      };
-      const locB = {
-        geoLoc: m.geoLocationB,
-        fullAddress: inputB
-      };
-      this.props.getResults(mid, locA, locB);
-      this.setState({ inputA: '', inputB: '' });
-    } else {
-      alert('please enter Address');
-    }
-  };
+  // handleSubmit = async e => {
+  //   e.preventDefault();
+  //   const { inputA, inputB } = this.state;
+  //   const key = keys.API_KEY;
+  //   if (inputA.length > 5 && inputB.length > 5) {
+  //     let m = await getMiddlePoint(url, key, inputA, inputB);
+  //     const mid = m.calcMiddle;
+  //     const locA = {
+  //       geoLoc: m.geoLocationA,
+  //       fullAddress: inputA
+  //     };
+  //     const locB = {
+  //       geoLoc: m.geoLocationB,
+  //       fullAddress: inputB
+  //     };
+  //     this.props.getResults(mid, locA, locB);
+  //     this.setState({ inputA: '', inputB: '' });
+  //   } else {
+  //     alert('please enter Address');
+  //   }
+  // };
 
   render() {
     return (
@@ -62,18 +55,20 @@ class SearchInput extends Component {
             <input     
               value={this.state.inputA}
               placeholder="Location A"
-              onChange={this.handleChangeA}
+              name='inputA'
+              onChange={this.handleChange}
             />
           </Form.Field>
           <Form.Field>
             <input     
               value={this.state.inputB}
               placeholder="Location B"
-              onChange={this.handleChangeB}
+              name='inputB'
+              onChange={this.handleChange}
             />
           </Form.Field>
           <Button type="submit" style={btnStyle} onClick={this.handleSubmit}>
-            Submit
+            Search
           </Button>
         </Form>
       </div>

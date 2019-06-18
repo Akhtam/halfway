@@ -1,11 +1,21 @@
 ::-webkit-scrollbar { 
   display: none; 
 }
+/* @media only screen and (max-width: 690px) {
+  .map-container {
+    display: none;
+  }
+  .lists {
+    width: 90%;
+  }
+} */
+
 
 .search-input {
-  width: 50%;
+  width: 40%;
   margin: 10px auto;
 }
+
 .ui.segment {
   height: 250px;
   background-color: #899696;
@@ -34,3 +44,13 @@ h1 {
   padding: 10px;
 }
 
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .search-input{
+    width: 100%;
+  }
+  .lists {
+    width: 90%;
+    overflow-y: scroll;
+  }
+}

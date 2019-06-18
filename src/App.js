@@ -6,7 +6,7 @@ import axios from 'axios';
 import dummyData from './dbmock/dumm';
 import IMAGE from './landry.jpg';
 import Lists from './components/Lists';
-import GoogleApiWrapper from './components/ShowMap';
+//import GoogleApiWrapper from './components/ShowMap';
 
 const backImg = {
   backgroundImage: `url(${IMAGE})`,
@@ -56,7 +56,7 @@ class App extends Component {
   };
 
   render() {
-    const { results, middle, locationA, locationB, showLocation } = this.state;
+    const { results, locationA, locationB, showLocation } = this.state;
     return (
       <div className="App">
         <div className="container">
@@ -85,13 +85,13 @@ class App extends Component {
             </Header>
           ) : null}
         </div>
-        <div>
+        {/* <div className="map-container">
           <GoogleApiWrapper
             midd={middle}
             firstLoc={locationA.geoLoc}
             secondLoc={locationB.geoLoc}
           />
-        </div>
+        </div> */}
         <div>
           <Lists result={results} />
         </div>
