@@ -45,7 +45,6 @@ class App extends Component {
     }
 
     const results = await response.data.businesses;
-
     this.setState({
       results,
       middle,
