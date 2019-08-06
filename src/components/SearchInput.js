@@ -13,7 +13,7 @@ const url = 'https://maps.googleapis.com/maps/api/geocode/json';
 const SearchInput = ({ getResults }) => {
   const [locationA, setInputA] = useState('');
   const [locationB, setInputB] = useState('');
-  //handle submit
+  //handle submit button
   const handleSubmit = async e => {
     e.preventDefault();
     const key = keys.API_KEY;
