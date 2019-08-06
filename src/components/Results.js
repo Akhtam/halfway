@@ -14,7 +14,7 @@ const Results = ({
     <Item>
       <Item.Image size="small" src={image_url} />
       <Item.Content>
-        <Item.Header as="a" href={url} target="_blank">
+        <Item.Header as="a" href={url} target="_blank" rel="noopener">
           {name}
         </Item.Header>
         <Item.Meta>
